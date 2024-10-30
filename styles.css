@@ -95,6 +95,36 @@ header {
     color: var(--primary-color);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 15px;
+}
+
+nav ul li a {
+    color: var(--text-color);
+    font-weight: 600;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--accent-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    transform: scaleX(1);
+}
 
 .nav-links {
     display: flex;
@@ -542,8 +572,66 @@ footer {
     100% { transform: translateY(0px) rotate(360deg); }
 }
 
+#mobile-menu {
+    display: none;
+}
+
+#mobile-menu.active {
+    display: block;
+}
+
+
+@media (min-width: 769px) {
+    #mobile-menu-button {
+        display: none;
+    }
+
+    #mobile-menu {
+        display: none !important;
+    }
+}
 /* Responsive Styles */
 @media (max-width: 768px) {
+    
+    header .cta-button{
+        display: none;
+    }
+    #mobile-menu-button {
+        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        color: var(--light-text-color);
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #mobile-menu-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    #mobile-menu-button i {
+        font-size: 1.2rem;
+    }
+    #mobile-menu-button {
+        display: block;
+    }
+
+    nav.hidden {
+        display: none;
+    }
+
+    .btn {
+        width: 50%;
+    }
+    .btn-secondary{
+        width: 40%;
+    }
+
     .nav-links {
         display: none;
     }
